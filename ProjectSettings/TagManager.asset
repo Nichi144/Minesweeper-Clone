@@ -3,12 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Covers
+  - Lines
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Covers
   - Water
   - UI
   - 
