@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ public class Resize : MonoBehaviour
     private List<GameObject> totalboxes = new List<GameObject>();
     public int Mines;
     public int Safe;
+
+    private TMP_Text temp;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.O))
@@ -141,12 +144,17 @@ public class Resize : MonoBehaviour
 
                 Vector3 bpos = new Vector3(xStart + k + i - (x / 2), yStart + z + j - (y / 2));
                 totalboxes.Add(GameObject.Instantiate(PickBlock(), bpos, Quaternion.identity, GameObject.FindGameObjectWithTag("Covers").transform));
+                temp = totalboxes[x * i + j].GetComponent<TMP_Text>();
+                temp.text = "2";
+
             }
         }
     }
 
     public GameObject PickBlock()
     {
+                return safe;
+
         int m = Random.Range(1, Mines + Safe);
         if (((m < Mines + 1) && Mines > 0) || (Safe == 0))
         {
