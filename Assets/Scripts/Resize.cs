@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Resize : MonoBehaviour
@@ -18,7 +17,7 @@ public class Resize : MonoBehaviour
     public int Mines;
     public int Safe;
 
-    private TMP_Text temp;
+    private TextMeshProUGUI temp;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.O))
@@ -91,9 +90,6 @@ public class Resize : MonoBehaviour
             }
         }
 
-
-
-
         // Generate horizontal lines
         xLine.transform.localScale = new Vector2(1f * x, 0.05f);
         List<GameObject> lines1 = new List<GameObject>();
@@ -116,7 +112,6 @@ public class Resize : MonoBehaviour
         }
         totallines.AddRange(lines);
         totallines.AddRange(lines1);
-
 
         GenerateBlocks(x, y, xStart, yStart);
     }
@@ -141,20 +136,28 @@ public class Resize : MonoBehaviour
         {
             for (int j = 0; j < y; ++j)
             {
-
                 Vector3 bpos = new Vector3(xStart + k + i - (x / 2), yStart + z + j - (y / 2));
-                totalboxes.Add(GameObject.Instantiate(PickBlock(), bpos, Quaternion.identity, GameObject.FindGameObjectWithTag("Covers").transform));
-                temp = totalboxes[x * i + j].GetComponent<TMP_Text>();
-                temp.text = "2";
+                GameObject block = PickBlock();
+                totalboxes.Add(GameObject.Instantiate(block, bpos, Quaternion.identity, GameObject.FindGameObjectWithTag("Covers").transform));
+                if (block == mine)  // Blocks are generated in the follwing pattern: start from bottom left, go up that collumn until you can't, then move to the bottom block of the next collumn and repeat
+                {
+                    Debug.Log("Collumn: " + i + " Row: " + (8 - j));
+                }
+                else
+                {
+                    // Issue lies in this section now, seems I can access the correct block but no way currently to access the text message
 
-            }
+                    temp = totalboxes[totalboxes.Count - 1].GetComponent<TextMeshProUGUI>();
+                    temp.text = "2";
+
+                    // Destroy(totalboxes[totalboxes.Count - 1]);
+                }
+            }   
         }
     }
 
     public GameObject PickBlock()
     {
-                return safe;
-
         int m = Random.Range(1, Mines + Safe);
         if (((m < Mines + 1) && Mines > 0) || (Safe == 0))
         {
@@ -165,3 +168,4 @@ public class Resize : MonoBehaviour
         return safe;
     }
 }
+
