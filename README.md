@@ -44,8 +44,13 @@ https://discussions.unity.com/t/how-to-move-object-one-layer-up-or-down/127586
 https://discussions.unity.com/t/random-int-value/7800
 
 https://stackoverflow.com/questions/61796109/how-to-upload-unity-project-to-github
+
 https://www.youtube.com/watch?v=qpXxcvS-g3g
+
 https://www.youtube.com/watch?v=okW_M8ehez4
+
 https://discussions.unity.com/t/how-to-change-scale-of-a-gameobject-in-run-time/459315
+
 https://www.reddit.com/r/Unity3D/comments/qs1jwy/can_somebody_please_explain_why_the_move_tool_is/
+
 Was partially inspired by this guy's nesting to place part of the stuff I instantiate in overarching containers https://www.reddit.com/r/Unity3D/comments/1bq9xiy/i_was_tired_of_creating_prefab_overrides_by/
