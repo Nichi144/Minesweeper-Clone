@@ -6,6 +6,7 @@ Also, for the credits, I'll post a link to the places where I found my assets an
 
 RPI's Game Development Club (got some advice from them about a issue I was having with my game) and some of the old notes from my Intro to Game Dev Class
 Unity and C# Documentation
+
 https://seansleblanc.itch.io/better-minimal-webgl-template
 https://discussions.unity.com/t/how-to-change-a-variable-from-another-script/748740/2
 https://discussions.unity.com/t/how-do-i-get-the-name-of-the-active-scene/158229
