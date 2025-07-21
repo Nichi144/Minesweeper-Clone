@@ -84,6 +84,24 @@ public class Resize : MonoBehaviour
         }
         Safe = x * y - Mines;
 
+<<<<<<< Updated upstream
+=======
+        if (x == 30 && y == 16)
+        {
+            multix = 0.375f;
+            multiy = 0.43f;
+            yStart -= 0.25f;
+            xStart += 0.25f;
+        }
+        else if (x > 10)
+        {
+            multix = 0.65f;
+            multiy = 0.60f;
+            yStart -= 0.25f;
+        }
+
+        
+>>>>>>> Stashed changes
         // Generate vertical lines
         yLine.transform.localScale = new Vector2(0.05f, 1f * y);
         List<GameObject> lines = new List<GameObject>();
