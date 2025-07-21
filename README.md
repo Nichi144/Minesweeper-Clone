@@ -8,23 +8,41 @@ RPI's Game Development Club (got some advice from them about a issue I was havin
 Unity and C# Documentation
 
 https://seansleblanc.itch.io/better-minimal-webgl-template
+
 https://discussions.unity.com/t/how-to-change-a-variable-from-another-script/748740/2
+
 https://discussions.unity.com/t/how-do-i-get-the-name-of-the-active-scene/158229
+
 https://discussions.unity.com/t/how-do-i-get-a-variable-from-another-script/775847/2
+
 https://stackoverflow.com/questions/70437401/cannot-finish-the-game-in-unity-using-application-quit
+
 Minesweeper Odds: https://www.reddit.com/r/Minesweeper/comments/mdbequ/what_is_a_good_mine_ratio/
+
 https://discussions.unity.com/t/use-other-fonts-in-textmesh-pro/699131
+
 https://fonts.google.com/specimen/Rubik+Dirt?preview.text=Minesweeper%20Clone&categoryFilters=Appearance:%2FTheme%2FWoodtype
+
 https://medium.com/@Code_With_K/parallax-background-in-unity-fd8766d5a9bd
+
 https://slashdashgamesstudio.itch.io/simple-cave-background
+
 https://vnitti.itch.io/glacial-mountains-parallax-background
+
 https://discussions.unity.com/t/when-to-use-serializefield-and-why/506330/2
+
 https://discussions.unity.com/t/determine-if-game-object-is-tyoepf-one-prefab/43947
+
 https://discussions.unity.com/t/c-int-to-string/554740
+
 https://stackoverflow.com/questions/723211/quick-way-to-create-a-list-of-values-in-c
+
 Got some inspiration from this or a similar article on finding the prefab copies: https://discussions.unity.com/t/how-to-find-all-clones-of-a-gameobject/437083/10
+
 https://discussions.unity.com/t/how-to-move-object-one-layer-up-or-down/127586
+
 https://discussions.unity.com/t/random-int-value/7800
+
 https://stackoverflow.com/questions/61796109/how-to-upload-unity-project-to-github
 https://www.youtube.com/watch?v=qpXxcvS-g3g
 https://www.youtube.com/watch?v=okW_M8ehez4
