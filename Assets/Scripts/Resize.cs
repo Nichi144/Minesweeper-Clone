@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -14,24 +15,40 @@ public class Resize : MonoBehaviour
 
     private List<GameObject> totallines = new List<GameObject>();
     private List<GameObject> totalboxes = new List<GameObject>();
-    public int Mines;
-    public int Safe;
-    void Update()
+
+    [SerializeField] private int Mines;
+    [SerializeField] private int Safe;
+
+    private TMP_Text temp;
+
+    void Start()
     {
-        if (Input.GetKeyDown(KeyCode.O))
+        float shiftX = 0f;
+        if (NumOfXLines % 2 != 0)
         {
-            float shiftX = 0f;
-            if (NumOfXLines % 2 != 0)
-            {
-                shiftX -= 0.5f;
-            }
-            float shiftY = 0f;
-            if (NumOfYLines % 2 != 0)
-            {
-                shiftY -= 0.5f;
-            }
-            GenerateGrid(NumOfXLines, NumOfYLines, shiftX, shiftY);
+            shiftX -= 0.5f;
         }
+        float shiftY = 0.35f;
+        if (NumOfYLines % 2 != 0)
+        {
+            shiftY -= 0.5f;
+        }
+        GenerateGrid(NumOfXLines, NumOfYLines, shiftX, shiftY);
+    }
+
+    public void Reseter()
+    {
+        float shiftX = 0f;
+        if (NumOfXLines % 2 != 0)
+        {
+            shiftX -= 0.5f;
+        }
+        float shiftY = 0f;
+        if (NumOfYLines % 2 != 0)
+        {
+            shiftY -= 0.5f;
+        }
+        GenerateGrid(NumOfXLines, NumOfYLines, shiftX, shiftY);
     }
 
     public void Deleter()
@@ -57,13 +74,15 @@ public class Resize : MonoBehaviour
         Deleter();
 
         Mines = 10;
-        if (y == 36) {
-            
-        } else if ((x > 10) && (y > 10))
+        if (y == 36)
+        {
+
+        }
+        else if ((x > 10) && (y > 10))
         {
             Mines = 40;
-        } 
-        Safe = x*y - Mines;
+        }
+        Safe = x * y - Mines;
 
         // Generate vertical lines
         yLine.transform.localScale = new Vector2(0.05f, 1f * y);
@@ -88,9 +107,6 @@ public class Resize : MonoBehaviour
             }
         }
 
-
-
-
         // Generate horizontal lines
         xLine.transform.localScale = new Vector2(1f * x, 0.05f);
         List<GameObject> lines1 = new List<GameObject>();
@@ -114,7 +130,6 @@ public class Resize : MonoBehaviour
         totallines.AddRange(lines);
         totallines.AddRange(lines1);
 
-
         GenerateBlocks(x, y, xStart, yStart);
     }
 
@@ -134,15 +149,18 @@ public class Resize : MonoBehaviour
         }
 
         // Generate Boxes
+        // Blocks are generated in the follwing pattern: start from bottom left, 
+        // go up that collumn until you can't, then move to the bottom block of the next collumn and repeat
         for (int i = 0; i < x; i++)
         {
             for (int j = 0; j < y; ++j)
             {
-
                 Vector3 bpos = new Vector3(xStart + k + i - (x / 2), yStart + z + j - (y / 2));
-                totalboxes.Add(GameObject.Instantiate(PickBlock(), bpos, Quaternion.identity, GameObject.FindGameObjectWithTag("Covers").transform));
+                GameObject block = PickBlock();
+                totalboxes.Add(GameObject.Instantiate(block, bpos, Quaternion.identity, GameObject.FindGameObjectWithTag("Covers").transform));
             }
         }
+        DetectMines(x, y);
     }
 
     public GameObject PickBlock()
@@ -156,4 +174,57 @@ public class Resize : MonoBehaviour
         Safe--;
         return safe;
     }
+
+    public void DetectMines(int x, int y)
+    {
+        List<int> neighbors = new List<int>();
+        
+        for (int i = 0; i < x; i++)
+        {
+            for (int j = 0; j < y; ++j) // In each tile
+            {
+                if (totalboxes[i * y + j].name == "MineTile(Clone)") // If it's a mine
+                {
+                    neighbors.Clear();
+                    Debug.Log("Mine - Collumn: " + i + " Row: " + (x - j)); // Print the mine location
+                    if ((i * y + j) % y == y-1) // Top row number
+                    {
+                        neighbors = new List<int> { -y - 1, -y, -1, y - 1, y};
+                    }
+                    else if ((i * y + j) % y == 0) // Bottom row number
+                    {
+                        neighbors = new List<int> { -y, -y + 1, 1, y, y + 1};
+                    }
+                    else // Normal Tile
+                    {
+                        neighbors = new List<int>() { -y - 1, -y, -y + 1, -1, 1, y - 1, y, y + 1 };
+                    }
+
+                    for (int k = 0; k < neighbors.Count; k++) // Then check all neighbors
+                    {
+
+                        if (i * y + j + neighbors[k] >= 0 && i * y + j + neighbors[k] < totalboxes.Count) // If valid
+                        {
+                            if (totalboxes[i * y + j + neighbors[k]].name != "MineTile(Clone)") // And not a mine
+                            {
+                                temp = totalboxes[i * y + j + neighbors[k]].GetComponentInChildren<TMP_Text>();
+                                int cur_text = int.Parse(temp.text) + 1;  // Add one mine score to this neighbor
+                                temp.text = cur_text.ToString();
+                            }
+                            else
+                            {
+                                continue;
+                            }
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
 }
+

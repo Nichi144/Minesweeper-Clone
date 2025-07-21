@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/TitleScreen.unity
+    guid: ce7056256fdef3542aa91cc2d9951ad7
+  - enabled: 1
+    path: Assets/Scenes/Minesweeper.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Win.unity
+    guid: d8717ba4a772bdd42b14cc188b687aee
+  - enabled: 1
+    path: Assets/Scenes/Lose.unity
+    guid: 3f0a3af3846e67f419ea8b223a59c6e4
   m_configObjects: {}
