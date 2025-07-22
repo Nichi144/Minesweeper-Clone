@@ -5,6 +5,7 @@ using UnityEngine;
 public class RemoveSquare : MonoBehaviour
 {
     public SizeLoader sizeLoader;
+    public Resize resize;
 
     void Awake()
     {
@@ -19,6 +20,7 @@ public class RemoveSquare : MonoBehaviour
     public void DeleteSafe()
     {
         sizeLoader.Safe -= 1;
+        
         Destroy(gameObject);
     }
 

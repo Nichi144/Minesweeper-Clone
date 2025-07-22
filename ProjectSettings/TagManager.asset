@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Covers
   - Lines
+  - Numbers
   layers:
   - Default
   - TransparentFX
