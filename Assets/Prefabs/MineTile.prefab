@@ -160,7 +160,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8313804704399465116}
         m_TargetAssemblyTypeName: RemoveSquare, Assembly-CSharp
-        m_MethodName: Delete
+        m_MethodName: DeleteMine
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be314d2fe5193ef40bab82d32f828733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sizeLoader: {fileID: 0}
 --- !u!1 &8503215375148052766
 GameObject:
   m_ObjectHideFlags: 0
